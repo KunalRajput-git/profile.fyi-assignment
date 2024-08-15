@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
+import { CartProvider } from "../context/CartContext";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -14,8 +15,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <link rel="icon" href="/favicon.svg" />
       <body className={inter.className}>
-        <Navbar />
-        {children}
+        <CartProvider>
+          {/* Wraps the application in CartProvider to manage cart state globally */}
+          <Navbar />
+          {children}
+        </CartProvider>
       </body>
     </html>
   );

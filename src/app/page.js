@@ -1,9 +1,17 @@
+"use client";
 import ItemCard from "@/components/ui/ItemCard";
-
+import { CartState } from "../context/CartContext";
 export default function Home() {
+  const {
+    state: { items },
+  } = CartState(); // Extracting items from the global cart state.
+
   return (
     <main className="flex flex-wrap gap-2 justify-center pt-20 md:pt-24">
-      <ItemCard />
+      {/* Mapping over the items in the cart and rendering an ItemCard for each */}
+      {items.map((item) => (
+        <ItemCard key={item.id} item={item} />
+      ))}
     </main>
   );
 }
