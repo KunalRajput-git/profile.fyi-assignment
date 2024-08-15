@@ -1,7 +1,9 @@
-import Image from "next/image";
+import ItemCard from "@/components/ui/ItemCard";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24"></main>
+    <main className="flex flex-wrap gap-2 justify-center pt-20 md:pt-24">
+      <ItemCard />
+    </main>
   );
 }
