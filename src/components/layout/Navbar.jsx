@@ -3,7 +3,7 @@ import { MyCartButton } from "../cart/";
 
 export default function Navbar() {
   return (
-    <nav className="border-b-2 py-3 px-4 border-dotted border-gray-300 flex items-center justify-between fixed w-full bg-white">
+    <nav className="border py-3 px-4 border-gray-300 flex items-center justify-between fixed w-full bg-white">
       <div className="flex-shrink-0">
         <Image
           src="/profile-transparent-blue.png" // Image source.
