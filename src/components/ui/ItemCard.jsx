@@ -1,5 +1,5 @@
 "use client";
-import { CartState } from "../../context/CartContext";
+import { useCartState } from "../../context/CartContext";
 import Image from "next/image";
 import { Plus } from "react-bootstrap-icons";
 import QtySelector from "./QtySelector";
@@ -7,10 +7,7 @@ import { findCartItem } from "../../lib/utils";
 import { useCartActions } from "../../hooks/useCartActions";
 
 const ItemCard = ({ item }) => {
-  const {
-    state: { cart }, // Destructure cart from the state using CartState.
-  } = CartState();
-
+  const { cart } = useCartState(); // Destructure cart from the state using useCartState.
   const { addToCartHandler } = useCartActions(); // Get the addToCartHandler function from useCartActions.
   const cartItem = findCartItem(cart, item.id); // Check if the current item is already in the cart.
 

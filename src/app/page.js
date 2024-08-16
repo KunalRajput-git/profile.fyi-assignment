@@ -1,10 +1,8 @@
 "use client";
 import ItemCard from "@/components/ui/ItemCard";
-import { CartState } from "../context/CartContext";
+import { useCartState } from "../context/CartContext";
 export default function Home() {
-  const {
-    state: { items },
-  } = CartState(); // Extracting items from the global cart state.
+  const { items } = useCartState(); // Extracting items from the global cart state.
 
   return (
     <main className="flex flex-wrap gap-2 justify-center pt-20 md:pt-24">

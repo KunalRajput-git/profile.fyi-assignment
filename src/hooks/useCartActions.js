@@ -1,4 +1,4 @@
-import { CartState } from "../context/CartContext";
+import { useCartDispatch } from "../context/CartContext";
 import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
@@ -7,7 +7,7 @@ import {
 } from "../context/CartConstants";
 
 export const useCartActions = () => {
-  const { dispatch } = CartState();
+  const dispatch = useCartDispatch();
 
   const addToCartHandler = (item) => {
     // Define a function to handle adding an item to the cart.
