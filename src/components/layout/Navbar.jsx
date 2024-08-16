@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Cart2 } from "react-bootstrap-icons";
+import MyCartButton from "../cart/MyCartButton";
 import Button from "../ui/Button";
 
 export default function Navbar() {
@@ -17,10 +18,7 @@ export default function Navbar() {
 
       <div>
         {/* Cart button */}
-        <Button>
-          <Cart2 size={20} />
-          <span className="text-sm">My Cart</span>
-        </Button>
+        <MyCartButton />
       </div>
     </nav>
   );
