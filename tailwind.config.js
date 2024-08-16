@@ -11,6 +11,9 @@ module.exports = {
       colors: {
         "profile-red": "#FB2621", // Custom color for profile-red.
       },
+      screens: {
+        xs: "380px",
+      },
     },
   },
   plugins: [],
