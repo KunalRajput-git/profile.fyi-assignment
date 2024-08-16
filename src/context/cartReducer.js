@@ -1,4 +1,9 @@
-import { ADD_TO_CART, INCREMENT_QTY, REMOVE_FROM_CART } from "./CartConstants";
+import {
+  ADD_TO_CART,
+  DECREMENT_QTY,
+  INCREMENT_QTY,
+  REMOVE_FROM_CART,
+} from "./CartConstants";
 
 export const findCartItem = (cart, itemId) =>
   cart.find((cartItem) => cartItem.id === itemId); // Find an item in the cart by its ID.
@@ -36,7 +41,7 @@ export const CartReducer = (state, action) => {
     }
 
     case INCREMENT_QTY: {
-      // Handle incrementing the quantity of an existing item
+      // Handle incrementing the quantity of an existing item.
       let updatedCart = state.cart.map((cartItem) =>
         cartItem.id === itemId
           ? { ...cartItem, qty: cartItem.qty + 1 }
@@ -50,6 +55,20 @@ export const CartReducer = (state, action) => {
       };
     }
 
+    case DECREMENT_QTY: {
+      // Handle decrementing the quantity of an existing item.
+      let updatedCart = state.cart.map((cartItem) =>
+        cartItem.id === itemId
+          ? { ...cartItem, qty: cartItem.qty - 1 }
+          : cartItem
+      );
+      return {
+        ...state,
+        cart: updatedCart,
+        totalItemsCount: calculateTotalItemsCount(updatedCart),
+        totalAmount: calculateTotalAmount(updatedCart),
+      };
+    }
     default:
       return state;
   }

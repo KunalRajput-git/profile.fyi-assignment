@@ -3,6 +3,7 @@ import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
   INCREMENT_QTY,
+  DECREMENT_QTY,
 } from "../context/CartConstants";
 
 export const useCartActions = () => {
@@ -23,9 +24,20 @@ export const useCartActions = () => {
     dispatch({ type: INCREMENT_QTY, payload: { id } }); // Dispatch the INCREMENT_QTY action with the id as payload.
   };
 
+  const decrementQty = (id, qty) => {
+    // Define a function to handle decrementing the quantity of an existing item.
+    if (qty === 1) {
+      removeFromCart(id); // If the quantity is 1, remove the item from the cart.
+    } else {
+      dispatch({ type: DECREMENT_QTY, payload: { id } }); // Dispatch the DECREMENT_QTY action with the id as payload.
+    }
+  };
+
   return {
-    addToCartHandler, // Return the addToCartHandler function for use in other parts of the application.
+    // Return the functions for use in other parts of the application.
+    addToCartHandler,
     removeFromCart,
     incrementQty,
+    decrementQty,
   };
 };
