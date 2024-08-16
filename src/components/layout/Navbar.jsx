@@ -1,7 +1,5 @@
 import Image from "next/image";
-import { Cart2 } from "react-bootstrap-icons";
-import MyCartButton from "../cart/MyCartButton";
-import Button from "../ui/Button";
+import { MyCartButton } from "../cart/";
 
 export default function Navbar() {
   return (

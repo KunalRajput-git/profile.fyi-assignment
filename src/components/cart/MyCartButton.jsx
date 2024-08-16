@@ -1,7 +1,7 @@
 "use client";
 import { useCartState } from "../../context/CartContext";
 import { Cart2 } from "react-bootstrap-icons";
-import Button from "../ui/Button";
+import { Button } from "../ui/";
 
 export default function MyCartButton() {
   const { totalItemsCount, totalAmount } = useCartState(); // Destructure cart from the state using useCartState.

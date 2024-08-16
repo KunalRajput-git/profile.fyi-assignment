@@ -2,7 +2,7 @@
 import { useCartState } from "../../context/CartContext";
 import Image from "next/image";
 import { Plus } from "react-bootstrap-icons";
-import QtySelector from "./QtySelector";
+import { QtySelector } from "./";
 import { findCartItem } from "../../lib/utils";
 import { useCartActions } from "../../hooks/useCartActions";
 
