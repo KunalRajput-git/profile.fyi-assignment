@@ -1,6 +1,7 @@
 "use client";
-import ItemCard from "@/components/ui/ItemCard";
+import { ItemCard } from "@/components/ui/";
 import { useCartState } from "../context/CartContext";
+
 export default function Home() {
   const { items } = useCartState(); // Extracting items from the global cart state.
 
