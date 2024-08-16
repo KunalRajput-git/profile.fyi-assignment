@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from "./CartConstants";
+import { ADD_TO_CART, INCREMENT_QTY, REMOVE_FROM_CART } from "./CartConstants";
 
 export const findCartItem = (cart, itemId) =>
   cart.find((cartItem) => cartItem.id === itemId); // Find an item in the cart by its ID.
@@ -10,6 +10,7 @@ const calculateTotalItemsCount = (cart) =>
   cart.reduce((count, cartItem) => count + cartItem.qty, 0); // Calculate the total number of items in the cart.
 
 export const CartReducer = (state, action) => {
+  const itemId = action.payload.id || action.payload;
   switch (action.type) {
     case ADD_TO_CART: {
       // Handle adding a new item to the cart.
@@ -26,6 +27,21 @@ export const CartReducer = (state, action) => {
     case REMOVE_FROM_CART: {
       // Handle removing an item from the cart.
       let updatedCart = state.cart.filter((cartItem) => cartItem.id !== itemId);
+      return {
+        ...state,
+        cart: updatedCart,
+        totalItemsCount: calculateTotalItemsCount(updatedCart),
+        totalAmount: calculateTotalAmount(updatedCart),
+      };
+    }
+
+    case INCREMENT_QTY: {
+      // Handle incrementing the quantity of an existing item
+      let updatedCart = state.cart.map((cartItem) =>
+        cartItem.id === itemId
+          ? { ...cartItem, qty: cartItem.qty + 1 }
+          : cartItem
+      );
       return {
         ...state,
         cart: updatedCart,

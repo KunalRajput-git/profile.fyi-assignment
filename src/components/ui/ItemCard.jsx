@@ -33,7 +33,7 @@ const ItemCard = ({ item }) => {
           <p className="truncate">₹{item.price}</p>{" "}
           {/* Display the item price */}
           {cartItem ? (
-            <QtySelector qty={cartItem.qty} /> // If the item is in the cart, show the quantity selector.
+            <QtySelector qty={cartItem.qty} id={item.id} /> // If the item is in the cart, show the quantity selector.
           ) : (
             <Plus
               className="border rounded-md border-blue-950 text-xl"
