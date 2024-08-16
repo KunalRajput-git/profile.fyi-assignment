@@ -3,7 +3,7 @@ import { CartState } from "../../context/CartContext";
 import Image from "next/image";
 import { Plus } from "react-bootstrap-icons";
 import QtySelector from "./QtySelector";
-import { findCartItem } from "../../context/cartReducer";
+import { findCartItem } from "../../lib/utils";
 import { useCartActions } from "../../hooks/useCartActions";
 
 const ItemCard = ({ item }) => {
