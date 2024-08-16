@@ -1,4 +1,4 @@
-import { ADD_TO_CART } from "./CartConstants";
+import { ADD_TO_CART, REMOVE_FROM_CART } from "./CartConstants";
 
 export const findCartItem = (cart, itemId) =>
   cart.find((cartItem) => cartItem.id === itemId); // Find an item in the cart by its ID.
@@ -20,6 +20,17 @@ export const CartReducer = (state, action) => {
         cart: updatedCart, // Update the cart with the new item.
         totalItemsCount: calculateTotalItemsCount(updatedCart), // Update the total item count.
         totalAmount: calculateTotalAmount(updatedCart), // Update the total amount.
+      };
+    }
+
+    case REMOVE_FROM_CART: {
+      // Handle removing an item from the cart.
+      let updatedCart = state.cart.filter((cartItem) => cartItem.id !== itemId);
+      return {
+        ...state,
+        cart: updatedCart,
+        totalItemsCount: calculateTotalItemsCount(updatedCart),
+        totalAmount: calculateTotalAmount(updatedCart),
       };
     }
 
