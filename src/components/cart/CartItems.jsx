@@ -12,7 +12,7 @@ export default function CartItems() {
         <ItemCard
           key={item.id}
           item={item}
-          className="flex w-full p-2 xs:p-3 md:p-4 pr-4 xs:w-full md:w-full justify-between items-center mt-2"
+          className="flex w-full p-2 xs:p-3 md:p-4 pr-4 xs:w-full md:w-full justify-between items-center mt-2 relative"
           isFromCart={true}
         />
       ))}
