@@ -12,6 +12,7 @@ export const CartProvider = ({ children }) => {
     cart: [],
     totalItemsCount: 0, // Total number of items in the cart.
     totalAmount: 0, // Total amount of all items in the cart.
+    discount: { isCouponApplied: false, coupon: null, amount: 0 }, // Initial discount state.
   });
 
   return (
