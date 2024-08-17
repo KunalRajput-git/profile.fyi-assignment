@@ -5,6 +5,7 @@ import {
   FLAT_DISCOUNT,
   INCREMENT_QTY,
   PERCENTAGE_DISCOUNT,
+  REMOVE_COUPON,
   REMOVE_FROM_CART,
   SELECTED100,
 } from "./CartConstants";
@@ -83,6 +84,14 @@ export const CartReducer = (state, action) => {
       };
     }
 
+    case REMOVE_COUPON: {
+      // Return the updated state with the coupon removed and discount reset
+      let discount = { isCouponApplied: false, coupon: null, amount: 0 };
+      return {
+        ...state,
+        discount: discount,
+      };
+    }
     default:
       return state;
   }

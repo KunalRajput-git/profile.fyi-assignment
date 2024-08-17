@@ -22,8 +22,8 @@ export default function Discount({ name, value }) {
 
   // Determine if the "Apply" button should be disabled
   let isBtnDisabled = inputCoupon.length === 0;
-  // Extract the applyCoupon function from the custom hook useCartActions.
-  const { applyCoupon } = useCartActions();
+  // Extract the applyCoupon & removeCoupon functions from the custom hook useCartActions.
+  const { applyCoupon, removeCoupon } = useCartActions();
 
   // Define a function to handle the coupon application process.
   const onApplyCouponHandler = () => {
@@ -38,13 +38,21 @@ export default function Discount({ name, value }) {
     }
   };
 
+  const onRemoveCouponHandler = () => {
+    removeCoupon();
+    setInputCoupon("");
+  };
+
   return (
     <div>
       {isCouponApplied ? (
         // If a coupon is applied, display it with an option to remove
         <div className="mt-2 flex justify-between items-center">
           <h4>{coupon} applied</h4>
-          <h4 className="border-b border-dashed border-blue-950 cursor-pointer">
+          <h4
+            className="border-b border-dashed border-blue-950 cursor-pointer"
+            onClick={onRemoveCouponHandler}
+          >
             remove
           </h4>
         </div>
