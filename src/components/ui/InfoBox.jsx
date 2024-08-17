@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { useNavigate } from "../../hooks/useNavigate";
 import Button from "@/components/ui/Button";
@@ -19,7 +20,7 @@ const InfoBox = ({ imageSrc, title, subtitle, buttonText, buttonLink }) => {
       />
       {buttonText && (
         <Button
-          className="text-sm font-light justify-center w-1/2 m-auto mt-3"
+          className="text-sm font-light justify-center m-auto mt-3 w-48"
           onClick={() => navigateTo(buttonLink)} // Navigate to the specified link
         >
           {buttonText}
