@@ -11,7 +11,7 @@ import {
 export const useCartActions = () => {
   // Extract relevant state values from the Cart context
   const {
-    totalItemsCount, // The total number of items in the cart
+    cart, // The total number of items in the cart
     discount: { isCouponApplied, coupon }, // Destructure discount details
   } = useCartState();
 
@@ -31,7 +31,7 @@ export const useCartActions = () => {
     // Define a function to handle removing an item from the cart.
     dispatch({ type: REMOVE_FROM_CART, payload: { id } }); // Dispatch the REMOVE_FROM_CART action with the id as payload.
     if (isCouponApplied)
-      totalItemsCount == 1
+      cart.length === 1
         ? removeCoupon() // If there's only one item left in the cart, remove the coupon
         : applyDiscount(); // Reapply the discount if a coupon is applied;
   };
