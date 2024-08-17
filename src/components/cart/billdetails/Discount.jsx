@@ -1,6 +1,12 @@
 "use client";
 import Button from "@/components/ui/Button";
+import {
+  OFFER25,
+  SELECTED100,
+  COUPON_ERROR_MSG,
+} from "@/context/CartConstants";
 import { useCartState } from "@/context/CartContext";
+import { useCartActions } from "@/hooks/useCartActions";
 import { useState } from "react";
 import { CouponInfo } from "./";
 
@@ -16,6 +22,21 @@ export default function Discount({ name, value }) {
 
   // Determine if the "Apply" button should be disabled
   let isBtnDisabled = inputCoupon.length === 0;
+  // Extract the applyCoupon function from the custom hook useCartActions.
+  const { applyCoupon } = useCartActions();
+
+  // Define a function to handle the coupon application process.
+  const onApplyCouponHandler = () => {
+    // Check if the entered coupon code matches a valid coupon.
+    if (inputCoupon == SELECTED100 || inputCoupon == OFFER25) {
+      // If the coupon code is valid, reset any existing error state and apply the coupon.
+      setError({ state: false, message: "" });
+      applyCoupon(inputCoupon);
+    } else {
+      // If the coupon code is invalid, set the error state with an appropriate message.
+      setError({ state: true, message: COUPON_ERROR_MSG });
+    }
+  };
 
   return (
     <div>
@@ -39,6 +60,7 @@ export default function Discount({ name, value }) {
           <Button
             className="flex px-8 py-2 items-center justify-between disabled:cursor-not-allowed"
             disabled={isBtnDisabled}
+            onClick={onApplyCouponHandler}
           >
             <h3>Apply</h3>
           </Button>

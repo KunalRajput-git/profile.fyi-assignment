@@ -1,8 +1,12 @@
 import {
   ADD_TO_CART,
+  APPLY_COUPON,
   DECREMENT_QTY,
+  FLAT_DISCOUNT,
   INCREMENT_QTY,
+  PERCENTAGE_DISCOUNT,
   REMOVE_FROM_CART,
+  SELECTED100,
 } from "./CartConstants";
 
 const calculateTotalAmount = (cart) =>
@@ -54,6 +58,31 @@ export const CartReducer = (state, action) => {
       updatedCart = updateItemQuantity(state.cart, itemId, -1);
       return updateCartState(state, updatedCart);
     }
+
+    case APPLY_COUPON: {
+      const COUPON = action.payload;
+      // Function to calculate a flat discount
+      const calculateFlatDiscount = (totalAmount) =>
+        totalAmount < FLAT_DISCOUNT ? totalAmount : FLAT_DISCOUNT;
+      // Function to calculate a percentage discount
+      const calculatePercentageDiscount = (totalAmount) =>
+        Math.round((totalAmount * PERCENTAGE_DISCOUNT) / 100);
+      // Initialize discount object
+      const discount = {
+        isCouponApplied: true,
+        coupon: COUPON,
+        amount:
+          COUPON === SELECTED100
+            ? calculateFlatDiscount(state.totalAmount)
+            : calculatePercentageDiscount(state.totalAmount),
+      };
+      // Return updated state with applied discount
+      return {
+        ...state,
+        discount,
+      };
+    }
+
     default:
       return state;
   }

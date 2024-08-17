@@ -5,7 +5,7 @@ const Button = ({ children, className, ...props }) => {
     <button
       {...props}
       className={mergeClassNames(
-        "flex gap-2 font-bold bg-profile-red px-4 py-3 text-white rounded-md", // Apply default styles for button.
+        "flex gap-2 font-bold bg-profile-red disabled:bg-red-300 px-4 py-3 text-white rounded-md", // Apply default styles for button.
         className // Merge additional custom class names if provided.
       )}
     >
