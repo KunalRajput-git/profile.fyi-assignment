@@ -47,7 +47,7 @@ export default function BillDetails() {
       {/* Button to proceed to payment with the calculated grand total */}
       <Button
         className="w-full flex items-center justify-between mt-6"
-        onClick={() => onPayHandler}
+        onClick={onPayHandler}
       >
         <h3>Proceed to Pay {`₹${grandTotal}`}</h3>
         <ArrowRightSquareFill className="text-xl" />
