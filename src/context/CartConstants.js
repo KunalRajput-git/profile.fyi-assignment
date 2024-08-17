@@ -5,6 +5,9 @@ export const INCREMENT_QTY = "INCREMENT_QTY";
 export const DECREMENT_QTY = "DECREMENT_QTY";
 export const APPLY_COUPON = "APPLY_COUPON";
 export const REMOVE_COUPON = "REMOVE_COUPON";
+export const CLEAR_CART = "CLEAR_CART";
+
+// Define constants for coupons
 export const SELECTED100 = "Selected100";
 export const OFFER25 = "Offer25";
 export const FLAT_DISCOUNT = 100;

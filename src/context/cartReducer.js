@@ -8,6 +8,7 @@ import {
   REMOVE_COUPON,
   REMOVE_FROM_CART,
   SELECTED100,
+  CLEAR_CART,
 } from "./CartConstants";
 
 const calculateTotalAmount = (cart) =>
@@ -57,6 +58,12 @@ export const CartReducer = (state, action) => {
     case DECREMENT_QTY: {
       // Handle decrementing the quantity of an existing item.
       updatedCart = updateItemQuantity(state.cart, itemId, -1);
+      return updateCartState(state, updatedCart);
+    }
+
+    case CLEAR_CART: {
+      // Clear the cart by setting it to an empty array.
+      updatedCart = [];
       return updateCartState(state, updatedCart);
     }
 

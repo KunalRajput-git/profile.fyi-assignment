@@ -6,12 +6,13 @@ import {
   DECREMENT_QTY,
   APPLY_COUPON,
   REMOVE_COUPON,
+  CLEAR_CART,
 } from "../context/CartConstants";
 
 export const useCartActions = () => {
   // Extract relevant state values from the Cart context
   const {
-    cart, // The total number of items in the cart
+    cart, // cart
     discount: { isCouponApplied, coupon }, // Destructure discount details
   } = useCartState();
 
@@ -62,6 +63,12 @@ export const useCartActions = () => {
     dispatch({ type: REMOVE_COUPON, payload: {} });
   };
 
+  const clearCart = () => {
+    // Define a function to handle clear cart.
+    dispatch({ type: CLEAR_CART, payload: {} });
+    removeCoupon();
+  };
+
   return {
     // Return the functions for use in other parts of the application.
     addToCartHandler,
@@ -70,5 +77,6 @@ export const useCartActions = () => {
     decrementQty,
     applyCoupon,
     removeCoupon,
+    clearCart,
   };
 };
