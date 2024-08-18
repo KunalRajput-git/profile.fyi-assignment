@@ -1,14 +1,14 @@
-"use client";
 import { Container } from "@/components/layout";
 import { ItemCard } from "@/components/ui/";
-import { useCartState } from "../context/CartContext";
+import { useApi } from "@/hooks/useApi";
 
-export default function Home() {
-  const { items } = useCartState(); // Extracting items from the global cart state.
+export default async function Home() {
+  const { getItems } = useApi(); // Destructuring the getItems function from useApi
+  const items = await getItems(); // Fetching items from the API
 
   return (
     <Container className="flex flex-wrap gap-2 justify-center">
-      {/* Mapping over the items in the cart and rendering an ItemCard for each */}
+      {/* Mapping over the items and rendering an ItemCard for each */}
       {items.map((item) => (
         <ItemCard key={item.id} item={item} />
       ))}

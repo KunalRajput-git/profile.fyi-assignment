@@ -1,7 +1,8 @@
 const CouponInfoRow = ({ code, description }) => {
   return (
     <h1>
-      Use <span className="font-bold">"{code}"</span> to get {description} off!
+      Use <span className="font-bold">&quot;{code}&quot;</span> to get{" "}
+      {description} off!
     </h1>
   );
 };
