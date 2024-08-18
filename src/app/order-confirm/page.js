@@ -1,3 +1,4 @@
+import { Container } from "@/components/layout";
 import { InfoBox } from "@/components/ui";
 
 export const metadata = {
@@ -6,7 +7,7 @@ export const metadata = {
 
 export default function OrderConfirmation() {
   return (
-    <div className="pt-20 pb-6 md:pt-24 px-3 md:px-8 m-auto w-full md:w-[600px]">
+    <Container className="md:w-[600px]">
       <InfoBox
         imageSrc="/images/order-confirm.jpg"
         title="Your order has been confirmed!"
@@ -14,6 +15,6 @@ export default function OrderConfirmation() {
         buttonText="Continue Shopping"
         buttonLink="/"
       />
-    </div>
+    </Container>
   );
 }

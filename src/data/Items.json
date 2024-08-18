@@ -3,8 +3,7 @@
     "id": "item1",
     "name": "Harvest Gold - White Bread",
     "price": 28,
-    "img": "/images/Harvest Gold - White Bread.avif",
-    "qty": 1
+    "img": "/images/Harvest Gold - White Bread.avif"
   },
   {
     "id": "item2",
